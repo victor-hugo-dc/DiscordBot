@@ -8,3 +8,6 @@ To be able to run the code, obtain the bot key, cleverbot user, and cleverbot ke
 
 ## Author
 This bot was created by [Victor Del Carpio](https://github.com/victor-hugo-dc).
+
+## License
+[MIT](LICENSE)
