@@ -3,17 +3,17 @@ from discord.ext import commands
 import requests
 import json
 
-TOKEN = 'NTUxOTQzNTc4ODA1NjAwMjc3.D14VDg.Kx67OhzDhUAsyrAcof6vTBNwnds'
-COMMAND_PREFIX = ('!', 'nav ', 'navrocko ')
-NICK = 'NavRocko'
-CB_USER = '6YMqiUa3FFVYA9oM'
-CB_KEY = 'e2ojPdzkbbZXeO03QJmo8209qNqLcfhg'
+TOKEN = '' #Insert Bot Token from Discord
+COMMAND_PREFIX = ('!', '+', '.') #Command Prefixes can be a string or a tuple of strings
+NICK = '' #Nickname
+CB_USER = '' #Cleverbot.io user
+CB_KEY = '' #Cleverbot.io key
 
 client = commands.Bot(command_prefix = COMMAND_PREFIX)
 
 @client.event
 async def on_ready():
-    await client.change_presence(game=discord.Game(name='with bruvvas'))
+    await client.change_presence(game=discord.Game(name='with Humans'))
     print('Bot is ready.')
 
 @client.event
@@ -23,6 +23,8 @@ async def on_message(message):
 
 @client.command()
 async def weather():
+    #Weather command to get forecast in Centreville, VA. 
+    #Change coordinates for your city.
     COORD = {
         "x": 38.8404,
         "y": -77.4289
@@ -43,7 +45,9 @@ async def set(ctx):
 
 @client.command(pass_context=True)
 async def echo(ctx):
-    await client.say(ctx.message.content)
+    msg = ctx.message.content
+    msg = msg[msg.find('echo') + 4:]
+    await client.say(msg)
 
 @client.command(pass_context=True)
 async def chat(ctx):
@@ -58,12 +62,6 @@ async def chat(ctx):
     if r['status'] == 'success':
         await client.say(r['response'])
     else:
-        await client.say('yo wtf')
-
-@client.command()
-async def extinguish():
-    embed = discord.Embed(title = 'Navrocko@icloud.com',color=0x0080ff)
-    embed.set_image(url='https://cdn.discordapp.com/attachments/141981735997931520/551473410996437036/image0.png')
-    await client.say(embed=embed)
+        await client.say('Error')
 
 client.run(TOKEN)
