@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import requests
 import json
+from bs4 import BeautifulSoup
 
 TOKEN = '' #Insert Bot Token from Discord
 COMMAND_PREFIX = ('!', '+', '.') #Command Prefixes can be a string or a tuple of strings
@@ -63,5 +64,17 @@ async def chat(ctx):
         await client.say(r['response'])
     else:
         await client.say('Error')
+
+@client.command(pass_context=True)
+async def youtube(ctx):
+    msg = ctx.message.content
+    msg = msg[msg.find('youtube') + 7:].replace(' ', '%20').lower()
+    r = requests.get('https://www.youtube.com/results?search_query='+msg)
+    soup = BeautifulSoup(r.text, 'html.parser')
+    for link in soup.find_all('a'):
+            result = link.get('href')
+            if result.startswith('/watch'):
+                break
+    await client.say('https://www.youtube.com'+result)
 
 client.run(TOKEN)
