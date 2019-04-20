@@ -1,13 +1,11 @@
 # DiscordBot
-A simple `bot` created for Discord group chats.
+> A simple `bot` based off of [Yalebot](https://github.com/ErikBoesen/Yalebot) for Discord group chats.
 
 ## Design
-This bot uses the [Discord Bot API](https://discordbots.org/api/docs) to send/receive messages. 
-This bot also utilizes the [Cleverbot](https://www.cleverbot.com/) application to respond to certain text messages.
-To be able to run the code: obtain the bot key, cleverbot user, and cleverbot key. Add commands by adding the decorator `@client.command` to an `async` method. A great tutorial avaialable [here](https://www.youtube.com/watch?v=5yahh4tR0L0&list=PLW3GfRiBCHOiEkjvQj0uaUB1Q-RckYnj9).
+This bot uses the [Discord Bot API](https://discordbots.org/api/docs) to send/receive messages. This cogs of this bot are based off of [Erik Boesen's](https://github.com/ErikBoesen) Yalebot for GroupMe. 
 
 ## Author
-Code written by [Victor Del Carpio](https://github.com/victor-hugo-dc).
+Code written by [Victor Del Carpio](https://github.com/victor-hugo-dc). Based off of work from [Erik Boesen's](https://github.com/ErikBoesen)
 
 ## License
 [MIT License](LICENSE)
